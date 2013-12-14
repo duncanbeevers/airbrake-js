@@ -12,7 +12,8 @@ describe "Client", ->
   afterEach -> clock.restore()
 
   writeThroughProcessor = null
-  beforeEach -> writeThroughProcessor = { process: (data, fn) -> fn('write-through', data); }
+  beforeEach ->
+    writeThroughProcessor = (data, fn) -> fn(data)
 
   describe "environmentName", ->
     it "is \"\" by default", ->
@@ -24,10 +25,12 @@ describe "Client", ->
       client.setEnvironmentName("[custom_environment]")
       expect(client.getEnvironmentName()).to.equal("[custom_environment]")
 
-  it "can set and read `project`", ->
-    client = new Client()
-    client.setProject("[custom_project_id]", "[custom_key]")
-    expect(client.getProject()).to.deep.equal([ "[custom_project_id]", "[custom_key]" ])
+  it 'can set and read `project`', ->
+    client = new Client writeThroughProcessor, (notice, opts) ->
+      expect(opts.projectId).to.equal('[custom_project_id]')
+      expect(opts.projectKey).to.equal('[custom_key]')
+    client.setProject('[custom_project_id]', '[custom_key]')
+    client.push error: {}
 
   describe "addContext", ->
     it "can be set and read", ->

@@ -1,7 +1,7 @@
 expect = require("chai").expect
 sinon = require("sinon")
 
-Reporter = require("../../../src/reporters/xhr_reporter")
+Reporter = require('../../../src/reporters/xhr')
 
 MockXhr = ->
 MockXhr.prototype = {

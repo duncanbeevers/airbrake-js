@@ -7,7 +7,7 @@ expect     = chai.expect
 chai.use(sinon_chai)
 
 expect = chai.expect
-Processor = require("../../../src/processors/sourcemaps_processor")
+Processor = require('../../../src/processors/sourcemaps')
 
 source_map_json = "{\"version\":3,\"file\":\"generated.js\",\"sources\":[\"/Users/duncanbeevers/Projects/airbrake/airbrake-js/test/examples/js/browserify/main.js\",\"/Users/duncanbeevers/Projects/airbrake/airbrake-js/test/examples/js/browserify/error_coffee_maker_module.coffee\",\"/Users/duncanbeevers/Projects/airbrake/airbrake-js/test/examples/js/browserify/error_maker_module.js\"],\"names\":[],\"mappings\":\";AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;ACRA,CAAO,EAAU,GAAX,CAAN,EAAiB;CAAG,QAAC;CAAJ;;;;ACAjB;AACA;AACA;AACA\",\"sourcesContent\":[\"(function(global){// Generate bundle.js using browserify\\n//   ./node_modules/grunt-browserify/node_modules/browserify/bin/cmd.js -d test/examples/js/browserify/main.js -o test/examples/js/browserify/bundle.js\\nvar ErrorMaker = require(\\\"./error_maker_module\\\");\\nvar ErrorCoffeeMaker = require(\\\"./error_coffee_maker_module.coffee\\\");\\n\\nglobal.ErrorMaker = ErrorMaker;\\nglobal.ErrorCoffeeMaker = ErrorCoffeeMaker;\\n\\n})(window)\",\"module.exports = -> (0)()\\n\",\"module.exports = function ErrorMaker() {\\n  (0)();\\n};\\n\"]}"
 
